@@ -1,0 +1,19 @@
+groups:
+  - name: SAAFEError
+    rules:
+
+      ####################################################################################
+      #                                Spanmetrics                                       #
+      ####################################################################################
+
+    - alert: HighErrorRate
+      expr: |-
+        (sum(rate(calls_total{status_code="STATUS_CODE_ERROR"} [5m])) by (job)
+        /
+        sum(rate(calls_total [5m])) by (job))
+        > 0.05
+      for: 10m
+      labels:
+        severity: critical
+        saafe_severity: critical
+        saafe_category: error
