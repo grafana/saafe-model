@@ -7,6 +7,9 @@ We provide an example implementation using Prometheus and PromQL, but the SAAFE 
 
 ## Getting Started
 
+> [!WARNING]  
+The demo is provided for illustrative purposes only and should not be run in production environments.
+
 To see a demo of the SAAFE model in action, run the following commands.
 
 ```bash
