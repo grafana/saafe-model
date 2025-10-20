@@ -5,7 +5,6 @@ groups:
       # Reference: https://www.robustperception.io/alerting-on-gauges-in-prometheus-2-0
     - alert: InstanceDown
       expr: (avg_over_time(up[5m]) < 0.8)
-      for: 5m
       labels:
         severity: critical
         saafe_severity: critical
