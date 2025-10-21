@@ -44,7 +44,7 @@ groups:
         saafe_version_type: runtime
         saafe_source: jvm
 
-    - record: saafe:release:version
+    - record: saafe:release:versions
       expr: |
         count by(job, saafe_version_type, saafe_source)(
           count_over_time(
@@ -59,7 +59,7 @@ groups:
       ################################################################
 
     - alert: "VersionUpdated"
-      expr: ceil(deriv(saafe:release:version[5m])) > 0
+      expr: ceil(deriv(saafe:release:versions[5m])) > 0
       labels:
         saafe_category: amend
         saafe_severity: info
