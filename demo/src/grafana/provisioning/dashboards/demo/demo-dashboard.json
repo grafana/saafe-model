@@ -283,7 +283,7 @@
             "uid": "webstore-metrics"
           },
           "editorMode": "code",
-          "expr": " sum by (span_name) (rate(calls_total{status_code=\"STATUS_CODE_ERROR\", service_name=\"${service}\"}[$__rate_interval]))",
+          "expr": " sum by (span_name) (rate(traces_span_metrics_calls_total{status_code=\"STATUS_CODE_ERROR\", service_name=\"${service}\"}[$__rate_interval]))",
           "interval": "",
           "legendFormat": "{{ span_name }}",
           "range": true,
