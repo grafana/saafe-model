@@ -42,9 +42,11 @@ receivers:
 exporters:
   debug:
   otlphttp/prometheus:
-    endpoint: "http://prometheus:9090/prometheus/api/v1/otlp"
+    endpoint: "http://prometheus:9090/api/v1/otlp"
     tls:
       insecure: true
+    sending_queue:
+      batch:
 
 processors:
   batch:
@@ -74,3 +76,12 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [debug]
+  telemetry:
+    metrics:
+      level: normal
+      readers:
+        - pull:
+            exporter:
+              prometheus:
+                host: "0.0.0.0"
+                port: 8888
