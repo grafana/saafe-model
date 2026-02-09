@@ -42,11 +42,9 @@ receivers:
 exporters:
   debug:
   otlphttp/prometheus:
-    endpoint: "http://prometheus:9090/api/v1/otlp"
+    endpoint: "http://prometheus:9090/prometheus/api/v1/otlp"
     tls:
       insecure: true
-    sending_queue:
-      batch:
 
 processors:
   batch:
